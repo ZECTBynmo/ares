@@ -15,8 +15,8 @@ ares("C:/SomeProgram.exe --option='yup'");
 
 An optional second parameter logs everything from stdout and stderr 
 ```JavaScript
-var ares = require('ares');
-ares("python C:/MyScript.py"m, true);
+var ares = require('ares').ares;
+ares("python C:/MyScript.py", true);
 ```
 
 Note: The name doesn't mean anything, it's just short and easy to type
