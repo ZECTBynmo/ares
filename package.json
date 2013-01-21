@@ -1,11 +1,11 @@
 { 
   "name": "ares",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Mike Vegeto <michael.vegeto@gmail.com>",
-  "description": "A simple wrapper around childProcess.exec that helps keep processing launching code clean",
+  "description": "A simple wrapper around childProcess.exec that helps keep process launching code clean",
   "main": "./ares",
   "engines": { "node": ">=0.8.0" },
-  "keywords": [ "country", "code", "ares" ],
-  "licenses": [ { "type": "MIT", "url": "http://raw.github.com/ZECTBynmo/gitstats/master/LICENSE" } ],
+  "keywords": [ "child process", "exec", "launch", "start", "ares" ],
+  "licenses": [ { "type": "MIT", "url": "http://raw.github.com/ZECTBynmo/ares/master/LICENSE" } ],
   "repository": { "type": "git", "url": "http://github.com/ZECTBynmo/ares.git" }
 }
