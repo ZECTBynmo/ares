@@ -7,7 +7,7 @@ npm install ares
 
 Usage
 ```JavaScript
-var ares = require('ares');
+var ares = require('ares').ares;
 
 ares("python C:/MyScript.py");
 ares("C:/SomeProgram.exe --option='yup'");

@@ -1,4 +1,4 @@
-exports = function( strCommand, debugOn ) {
+exports.ares = function( strCommand, debugOn ) {
 	var log = function(str) { 
 		if(debugOn!=undefined) {
 			console.log(str);
