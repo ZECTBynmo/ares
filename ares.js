@@ -15,8 +15,11 @@ exports.ares = function( strCommand, debugOn ) {
 			log('Signal received: '+error.signal);
 		}
 
-		log('Child Process STDOUT: '+stdout);
-		log('Child Process STDERR: '+stderr);
+		if( stdout != undefined && stdout != null && stdout != "" )
+			log('Child Process STDOUT: ' + stdout);
+		
+		if( stderr != undefined && stderr != null && stderr != "" )
+			log('Child Process STDERR: ' + stderr);
 	});
 
 	command.on('exit', function (code) {
