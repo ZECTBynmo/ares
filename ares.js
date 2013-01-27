@@ -1,4 +1,4 @@
-exports.ares = function( strCommand, debugOn ) {
+exports.ares = function( strCommand, debugOn, callback ) {
 	var log = function(str) { 
 		if(debugOn!=undefined) {
 			console.log(str);
@@ -8,7 +8,7 @@ exports.ares = function( strCommand, debugOn ) {
 	var childProcess = require('child_process'),
 		command;
 
-	command = childProcess.exec(strCommand, function (error, stdout, stderr) {
+	command = childProcess.exec(strCommand, callback || function (error, stdout, stderr) {
 		if (error) {
 			log(error.stack);
 			log('Error code: '+error.code);
