@@ -1,6 +1,6 @@
 { 
   "name": "ares",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "author": "Mike Vegeto <michael.vegeto@gmail.com>",
   "description": "A simple wrapper around childProcess.exec that helps keep process launching code clean",
   "main": "./ares",

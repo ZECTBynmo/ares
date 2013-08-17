@@ -1,9 +1,3 @@
-function log( str ) { 
-	if( debugOn!=undefined ) {
-		console.log(str);
-	} 
-}
-
 function Ares( strCommand, debugOn, callback ) {
 	var log = function(str) { 
 		if(debugOn!=undefined) {
