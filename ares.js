@@ -5,27 +5,30 @@ function log( str ) {
 }
 
 function Ares( strCommand, debugOn, callback ) {
-	var log = function(str) { 
-		if(debugOn!=undefined) {
-			console.log(str);
-		} 
-	}
+	this.command = {};
 
 	var childProcess = require('child_process'),
-		command;
+		command = this.command;
 
-	command = childProcess.exec(strCommand, callback);
+	command = childProcess.spawn( strCommand );
 
-	command.on('data', function(data) {
-		console.log( data );
+	command.stdout.on( 'data', function(data) {
+		if( debugOn )
+			console.log( data );
 	});
 
-	command.on('exit', function (code) {
-		log('Child process exited with exit code '+code);
+	command.stderr.on( 'data', function(data) {
+		if( debugOn )
+			console.log( data );
+	});
+
+	command.on('close', function (code) {
+	  	callback();
 	});
 
 	return this;
 }
+
 
 //////////////////////////////////////////////////////////////////////////
 // Stops the proces
