@@ -1,43 +1,28 @@
-function log( str ) { 
-	if( debugOn!=undefined ) {
-		console.log(str);
-	} 
-}
-
-function Ares( strCommand, debugOn, callback ) {
-	this.command = {};
+exports.ares = function( strCommand, debugOn, callback ) {
+	var log = function(str) { 
+		if(debugOn!=undefined) {
+			console.log(str);
+		} 
+	}
 
 	var childProcess = require('child_process'),
-		command = this.command;
+		command;
 
-	command = childProcess.spawn( strCommand );
+	command = childProcess.exec(strCommand, callback || function (error, stdout, stderr) {
+		if (error) {
+			log(error.stack);
+			log('Error code: '+error.code);
+			log('Signal received: '+error.signal);
+		}
 
-	command.stdout.on( 'data', function(data) {
-		if( debugOn )
-			console.log( data );
+		if( stdout != undefined && stdout != null && stdout != "" )
+			log('Child Process STDOUT: ' + stdout);
+		
+		if( stderr != undefined && stderr != null && stderr != "" )
+			log('Child Process STDERR: ' + stderr);
 	});
 
-	command.stderr.on( 'data', function(data) {
-		if( debugOn )
-			console.log( data );
+	command.on('exit', function (code) {
+		log('Child process exited with exit code '+code);
 	});
-
-	command.on('close', function (code) {
-	  	callback();
-	});
-
-	return this;
 }
-
-
-//////////////////////////////////////////////////////////////////////////
-// Stops the proces
-Ares.prototype.kill = function( message ) {
-	try {
-		this.command.kill();
-	} catch( err ) {
-		console.log( "Error killing process: " + err );
-	}
-} // end kill()
-
-exports.ares = Ares;
